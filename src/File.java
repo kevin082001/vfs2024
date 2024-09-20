@@ -15,6 +15,22 @@ public class File extends Managable {
         this.parent = parent;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
     public String getContent() {
         return content;
     }
@@ -25,5 +41,9 @@ public class File extends Managable {
 
     public Folder getParent() {
         return parent;
+    }
+
+    public boolean hasParent() {
+        return parent != null;
     }
 }

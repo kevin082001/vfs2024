@@ -4,9 +4,44 @@ public class InputParser {
             return -1;
         }
 
-        //do parsing stuff
+        String[] split = input.split(" ");
+        switch (split[0]) {
+            case "cd":
+                //handle "cd"
+                System.out.println("Detected 'cd' command");
+                break;
+            case "ls":
+                //handle "ls"
+                System.out.println("Detected 'ls' command");
+                break;
+            case "md":
+                //handle "md"
+                System.out.println("Detected 'md' command");
+                break;
+            case "mf":
+                //handle "mf"
+                System.out.println("Detected 'mf' command");
+                break;
+            case "rm":
+                //handle "rm"
+                System.out.println("Detected 'rm' command");
+                break;
+            case "edit":
+                //handle "edit"
+                System.out.println("Detected 'edit' command");
+                break;
+            case "echo":
+                //handle "echo"
+                System.out.println("Detected 'echo' command");
+                break;
+            case "help":
+                //handle "help"
+                System.out.println("Detected 'help' command");
+                break;
+            default:
+                System.out.println("'" + input + "' is not a known command");
+        }
 
-        //available commands: cd, ls, md, mf, rm, cat, echo
         //available flags: rm -R (delete all folders and subfolders in selected folder)
         //special cases: cd .. (switch to parent directory)
         //               cd root (switch to root directory)

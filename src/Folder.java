@@ -17,6 +17,22 @@ public class Folder extends Managable {
         this.children = children;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
     public Folder getParent() {
         return parent;
     }
@@ -31,5 +47,9 @@ public class Folder extends Managable {
         }
 
         children.add(child);
+    }
+
+    public boolean hasParent() {
+        return parent != null;
     }
 }
