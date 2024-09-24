@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class VFS {
     private static Folder currentFolder;
     private static Folder root = new Folder(1, "root", new Date(), null, null);
+    private static List<Managable> createdObjects = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -25,7 +26,7 @@ public class VFS {
             System.out.print("$ ");
             String command = SCAN.nextLine();
 
-            if (InputParser.parse(command) == -1) {
+            if (InputParser.parse(command, currentFolder, createdObjects) == -1) {
                 System.out.println("Could not parse input '" + command + "'. Try again.");
             }
         }

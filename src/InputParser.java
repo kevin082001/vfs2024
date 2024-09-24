@@ -1,10 +1,14 @@
+import java.util.List;
+
 public class InputParser {
-    public static int parse(String input) {
+    public static int parse(String input, Folder currentFolder, List<Managable> createdObjects) {
         if (!isValid(input)) {
             return -1;
         }
 
         String[] split = input.split(" ");
+        boolean success;
+
         switch (split[0]) {
             case "cd":
                 //handle "cd"
@@ -15,8 +19,10 @@ public class InputParser {
                 System.out.println("Detected 'ls' command");
                 break;
             case "md":
-                //handle "md"
-                System.out.println("Detected 'md' command");
+                success = md(split, currentFolder, createdObjects);
+                if (!success) {
+                    System.out.println("Sorry, but I could not run your command.");
+                }
                 break;
             case "mf":
                 //handle "mf"
@@ -31,7 +37,7 @@ public class InputParser {
                 System.out.println("Detected 'edit' command");
                 break;
             case "echo":
-                boolean success = echo(split);
+                success = echo(split);
                 if (!success) {
                     System.out.println("Sorry, but I could not run your command.");
                 }
@@ -71,6 +77,16 @@ public class InputParser {
             System.out.println(output);
         }
 
+        return true;
+    }
+
+    private static boolean md(String[] args, Folder currentFolder, List<Managable> createdObjects) {
+        if (args.length != 2 || Util.isNumber(args[1])) { //Directory name must not contain only numbers
+            return false;
+        }
+
+        //TODO replace 'objectType' with enum
+        Folder newFolder = (Folder) Util.createObject('d', args[1], currentFolder);
         return true;
     }
 
